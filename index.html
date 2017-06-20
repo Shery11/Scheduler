@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Scheduling</title>
+  
+  
+  <!-- <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/journal/bootstrap.min.css'>
+   --><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   <link rel="stylesheet" href="bower_components/ngToast/dist/ngToast.min.css">
+   
+
+   <style type="text/less">
+      body { font-family:Arial; font-size:14px; }
+      body>span, body>h1 { float:left; width:100%; margin:0; padding:0; margin-bottom:10px; }
+      
+      span { color:#888888;
+                >b { color:black; }
+            }
+            
+            .vertical-centre (@height) { height:@height; line-height:@height !important; display:inline-block; vertical-align:middle; }
+            .border-box { box-sizing:border-box; -moz-box-sizing:border-box; }
+
+            @border-colour:#CCC;
+            calendar { float:left; display:block; .border-box; background:white; width:300px; border:solid 1px @border-colour; margin-bottom:10px;
+                @secondary-colour:#2875C7;
+                @spacing:10px;
+                
+                @icon-width:40px;
+                @header-height:40px;
+                
+                >div.header { float:left; width:100%; background:@secondary-colour; height:@header-height; color:white;
+                    >* { .vertical-centre(@header-height); }
+                    >i { float:left; width:@icon-width; font-size:1.125em; font-weight:bold; position:relative; .border-box; padding:0 @spacing; cursor:pointer; }
+                    >i.fa-angle-left { text-align:left; }
+                    >i.fa-angle-right { text-align:right; margin-left:@icon-width*-1; }
+                    >span { float:left; width:100%; font-weight:bold; text-transform:uppercase; .border-box; padding-left:@icon-width+@spacing; margin-left:@icon-width*-1; text-align:center; padding-right:@icon-width; color:inherit; }
+                }
+                >div.week { float:left; width:100%; border-top:solid 1px @border-colour;
+                    &:first-child { border-top:none; }
+                    >span.day { float:left; width:100%/7; .border-box; border-left:solid 1px @border-colour; font-size:0.75em; text-align:center; .vertical-centre(30px); background:white; cursor:pointer; color:black;
+                        &:first-child { border-left:none; }
+                        &.today { background:#E3F2FF; }
+                        &.different-month { color:#C0C0C0; }
+                        &.selected { background:@secondary-colour;
+                         }
+
+                         &.booked { background: #eb6864;
+                         }
+
+
+
+
+                         
+                    }
+                    &.names>span { color:@secondary-colour; font-weight:bold; }
+                }
+            }
+        </style>
+
+  
+</head>
+
+<body ng-app="app" ng-controller="calendar">
+
+<!-- Trigger the modal with a button -->
+<div style="text-align: center; padding-top: 300px;">
+   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Scheduler</button>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-md">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Scheduler</h4>
+      </div>
+      <div class="modal-body">
+        <calendar selected="day"></calendar>
+        <span>Selected date: <b>{{day.format('dddd, MMMM Do YYYY')}}</b></label> </span>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="saveDate(day)">Confirm</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" ng-click="reset()">Clear</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<toast></toast>
+  
+<!-- <div class="container">
+  <calendar selected="day"></calendar><br>
+  <span>Selected date: <b>{{day.format('dddd, MMMM Do YYYY')}}</b></label>
+ </span>
+
+ <button class="btn btn-primary" ng-click="saveDate(day)">Confirm</button>
+ </div> -->
+
+
+<script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js'></script>
+<script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+<script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
+ <!-- ngToast -->
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/ngToast/dist/ngToast.min.js"></script>
+ <script src="bower_components/angular-animate/angular-animate.js"></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
