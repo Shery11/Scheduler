@@ -1,0 +1,23 @@
+{
+  "name": "scheduler",
+  "version": "1.0.0",
+  "description": "This is simple scheduler made with angularjs and firebase realtime database. ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shery11/Scheduler.git"
+  },
+  "author": "Shaharyar Kirmani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shery11/Scheduler/issues"
+  },
+  "homepage": "https://github.com/Shery11/Scheduler#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
